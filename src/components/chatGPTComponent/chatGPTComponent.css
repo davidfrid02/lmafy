@@ -23,7 +23,7 @@
 
     .chat-area {
         flex: 1 1;
-        padding: 20px;
+        padding: 21px;
         overflow-y: auto;
         display: flex;
         flex-direction: row;
