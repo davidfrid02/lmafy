@@ -41,7 +41,7 @@ function App() {
     return (
         <div className="wrapper">
             <div className="header">
-                <h2>Let Me ChatGPT That For You</h2>
+                <h2>Let Me ChatGPT that For You</h2>
             </div>
             <div className="chat-area">
                 <textarea
