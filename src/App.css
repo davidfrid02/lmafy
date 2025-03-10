@@ -80,3 +80,23 @@ body {
 #result a:hover {
     text-decoration: underline;
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 90vw;
+        padding: 15px;
+        margin-top: 20px;
+        height: 50vh;
+    }
+
+    #userInput {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        resize: none;
+        height: 40%;
+    }
+}
