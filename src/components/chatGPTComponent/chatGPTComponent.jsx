@@ -25,8 +25,8 @@ function ChatGPTComponent({ query }) {
             const buttonRect = enterButton.getBoundingClientRect()
 
             cursor.style.transition = 'all 1s ease'
-            cursor.style.left = `${inputRect.left + 10}px` // Slightly offset from edge
-            cursor.style.top = `${inputRect.top + 10}px`
+            cursor.style.left = `${inputRect.width}px`
+            cursor.style.top = `${inputRect.top + 30}px`
 
             await new Promise((resolve) => setTimeout(resolve, 1000))
             cursor.style.transform = 'scale(0.8)'
@@ -38,9 +38,8 @@ function ChatGPTComponent({ query }) {
                 if (index < queryText.length) {
                     setInputValue(queryText.substring(0, index + 1))
                     index++
-                    setTimeout(typeCharacter, 120)
+                    setTimeout(typeCharacter, 100)
                 } else {
-                    // 4. Move to button after typing
                     setTimeout(async () => {
                         cursor.style.left = `${
                             buttonRect.left + buttonRect.width / 2
@@ -49,7 +48,6 @@ function ChatGPTComponent({ query }) {
                             buttonRect.top + buttonRect.height / 2
                         }px`
 
-                        // 5. Click effect on button
                         await new Promise((resolve) =>
                             setTimeout(resolve, 1000)
                         )
@@ -57,12 +55,11 @@ function ChatGPTComponent({ query }) {
                         await new Promise((resolve) => setTimeout(resolve, 100))
                         cursor.style.transform = 'scale(1)'
 
-                        // 6. Redirect to Twitter
                         await new Promise((resolve) => setTimeout(resolve, 300))
                         const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(
                             query
                         )}`
-                        window.location.href = chatgptUrl
+                        // window.location.href = chatgptUrl
                     }, 500)
                 }
             }
@@ -76,17 +73,18 @@ function ChatGPTComponent({ query }) {
         <div className="chatGPTComponent">
             <div
                 ref={cursorRef}
+                className="cursor-element"
                 style={{
                     position: 'absolute',
-                    width: '24px',
-                    height: '24px',
+                    width: '32px',
+                    height: '32px',
                     backgroundImage: `url(${MouseCursor})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     pointerEvents: 'none',
                     zIndex: 9999,
-                    left: 0,
-                    top: 0,
+                    left: '25%',
+                    top: '20%',
                     transformOrigin: 'top left',
                     transition: 'transform 0.1s ease',
                 }}
