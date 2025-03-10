@@ -59,8 +59,8 @@ function ChatGPTComponent({ query }) {
                         const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(
                             query
                         )}`
-                        // window.location.href = chatgptUrl
-                    }, 500)
+                        window.location.href = chatgptUrl
+                    }, 300)
                 }
             }
             typeCharacter()
