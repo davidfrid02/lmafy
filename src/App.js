@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import ChatGPTComponent from './components/chatGPTComponent/chatGPTComponent'
 import StructuredData from './components/SEO/StructuredData'
-import GoogleAnalytics from './components/Analytics/GoogleAnalytics'
 
 function App() {
     const [inputValue, setInputValue] = useState('')
@@ -77,7 +76,6 @@ function App() {
 
     return (
         <>
-            <GoogleAnalytics />
             <StructuredData />
             <div className="wrapper">
                 <div className="header">
