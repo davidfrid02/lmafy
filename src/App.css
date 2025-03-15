@@ -81,6 +81,25 @@ body {
     text-decoration: underline;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#copyBtn {
+    padding: 10px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#copyBtn:hover {
+    background-color: #1d4ed8;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
     .wrapper {
