@@ -9,7 +9,6 @@ function App() {
     const [result, setResult] = useState('')
     const [generatedLink, setGeneratedLink] = useState('')
 
-    // Track page view
     useEffect(() => {
         if (window.gtag) {
             window.gtag('event', 'page_view')
@@ -24,7 +23,6 @@ function App() {
     const queryFromUrl = getQueryParam('q')
 
     if (queryFromUrl) {
-        // Track query usage
         if (window.gtag) {
             window.gtag('event', 'query_used', {
                 query: queryFromUrl,
@@ -43,7 +41,7 @@ function App() {
             setResult(
                 `Here's your link:<br /><a href="${link}" target="_blank">${link}</a>`
             )
-            // Track link generation
+
             if (window.gtag) {
                 window.gtag('event', 'link_generated', {
                     query: query,
@@ -61,7 +59,7 @@ function App() {
             const originalResult = result
             setResult('Link copied to clipboard!')
             setTimeout(() => setResult(originalResult), 2000)
-            // Track link copy
+
             if (window.gtag) {
                 window.gtag('event', 'link_copied')
             }
