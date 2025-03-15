@@ -1,12 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import ChatGPTComponent from './components/chatGPTComponent/chatGPTComponent'
 import StructuredData from './components/SEO/StructuredData'
+import GoogleAnalytics from './components/Analytics/GoogleAnalytics'
 
 function App() {
     const [inputValue, setInputValue] = useState('')
     const [result, setResult] = useState('')
     const [generatedLink, setGeneratedLink] = useState('')
+
+    // Track page view
+    useEffect(() => {
+        if (window.gtag) {
+            window.gtag('event', 'page_view')
+        }
+    }, [])
 
     const getQueryParam = (param) => {
         const urlParams = new URLSearchParams(window.location.search)
@@ -16,6 +24,12 @@ function App() {
     const queryFromUrl = getQueryParam('q')
 
     if (queryFromUrl) {
+        // Track query usage
+        if (window.gtag) {
+            window.gtag('event', 'query_used', {
+                query: queryFromUrl,
+            })
+        }
         return <ChatGPTComponent query={queryFromUrl} />
     }
 
@@ -29,6 +43,12 @@ function App() {
             setResult(
                 `Here's your link:<br /><a href="${link}" target="_blank">${link}</a>`
             )
+            // Track link generation
+            if (window.gtag) {
+                window.gtag('event', 'link_generated', {
+                    query: query,
+                })
+            }
         } else {
             setResult('Please enter a question first!')
             setGeneratedLink('')
@@ -41,6 +61,10 @@ function App() {
             const originalResult = result
             setResult('Link copied to clipboard!')
             setTimeout(() => setResult(originalResult), 2000)
+            // Track link copy
+            if (window.gtag) {
+                window.gtag('event', 'link_copied')
+            }
         } catch (err) {
             console.error('Failed to copy:', err)
         }
@@ -55,6 +79,7 @@ function App() {
 
     return (
         <>
+            <GoogleAnalytics />
             <StructuredData />
             <div className="wrapper">
                 <div className="header">
