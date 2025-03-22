@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://lmafy.com/sitemap.xml
+Sitemap: https://lmafy.vercel.app/sitemap.xml
